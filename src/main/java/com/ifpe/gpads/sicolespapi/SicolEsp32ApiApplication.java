@@ -1,11 +1,9 @@
 package com.ifpe.gpads.sicolespapi;
 
 import com.ifpe.gpads.sicolespapi.config.Config;
-import com.ifpe.gpads.sicolespapi.espsimulator.EngineTemperatureSensor;
+import com.ifpe.gpads.sicolespapi.espsimulator.EngineDistanceSensor;
 import com.ifpe.gpads.sicolespapi.handlers.MqttHandler;
 import org.eclipse.paho.client.mqttv3.IMqttClient;
-import org.eclipse.paho.client.mqttv3.MqttException;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -19,6 +17,9 @@ public class SicolEsp32ApiApplication {
 		IMqttClient client = MqttHandler.connectionHandler(host, username);
 
 		MqttHandler.subscribeHandler(client, topic);
+
+		EngineDistanceSensor engineDistanceSensor = new EngineDistanceSensor(client);
+		engineDistanceSensor.call();
 	}
 
 }

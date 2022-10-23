@@ -30,7 +30,7 @@ public class MqttHandler {
 
             @Override
             public void messageArrived(String s, MqttMessage mqttMessage) throws Exception {
-                String sql = "UPDATE trash_can SET isFull = true WHERE id = ?";
+                String sql = "UPDATE trash_can SET isFull = true WHERE " + jsonId + " = ?";
 
                 try {
                     PreparedStatement pstm = ConnectionManager.getConnection().prepareStatement(sql);
