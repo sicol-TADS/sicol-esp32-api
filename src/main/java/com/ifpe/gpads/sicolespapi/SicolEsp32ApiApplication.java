@@ -18,8 +18,9 @@ public class SicolEsp32ApiApplication {
 
 		MqttHandler.subscribeHandler(client, topic);
 
-		EngineDistanceSensor engineDistanceSensor = new EngineDistanceSensor(client);
-		engineDistanceSensor.call();
+		//Simulação de sensor de distância
+//		EngineDistanceSensor engineDistanceSensor = new EngineDistanceSensor(client);
+//		engineDistanceSensor.call();
 	}
 
 }
